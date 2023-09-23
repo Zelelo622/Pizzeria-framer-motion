@@ -1,14 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className="home container">
+    <motion.div
+      className="home container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.4, duration: 1.5 }}
+    >
       <h2>Добро пожаловать в пиццерию</h2>
       <NavLink to="/base">
-        <button>Создай свою пиццу</button>
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            textShadow: "0px 0px 8px rgb(255,255,255)",
+            boxShadow: "0px 0px 8px rgb(255,255,255)",
+          }}
+        >
+          Создай свою пиццу
+        </motion.button>
       </NavLink>
-    </div>
+    </motion.div>
   );
 };
 

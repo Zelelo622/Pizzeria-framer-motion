@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Header = () => {
   return (
@@ -16,9 +18,16 @@ const Header = () => {
           <path fill="none" d="M50 30 L50 -10 C50 -10 90 -10 90 30 Z" />
         </svg>
       </div>
-      <div className="title">
-        <h1>Пиццерия</h1>
-      </div>
+      <motion.div
+        className="title"
+        initial={{ y: -250 }}
+        animate={{ y: -10 }}
+        transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+      >
+        <NavLink to="/">
+          <h1>Пиццерия</h1>
+        </NavLink>
+      </motion.div>
     </header>
   );
 };

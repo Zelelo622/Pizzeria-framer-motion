@@ -10,13 +10,13 @@ function App() {
   };
 
   const addTopping = (topping) => {
-    let newTopping;
+    let newToppings;
     if (!pizza.toppings.includes(topping)) {
-      newTopping = [...pizza.toppings, topping];
+      newToppings = [...pizza.toppings, topping];
     } else {
-      newTopping = pizza.toppings.filter((item) => item !== topping);
+      newToppings = pizza.toppings.filter((item) => item !== topping);
     }
-    setPizza({ ...pizza, topping: newTopping });
+    setPizza({ ...pizza, toppings: newToppings });
   };
 
   return (
