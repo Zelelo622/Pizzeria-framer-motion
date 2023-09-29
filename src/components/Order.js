@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const containerVariants = {
@@ -31,12 +31,11 @@ const childVariants = {
   },
 };
 
-const Order = ({ pizza }) => {
-  const [showTitle, setShowTitle] = useState(true);
+const Order = ({ pizza, setShowModal }) => {
+  useEffect(() => {
+    setTimeout(() => setShowModal(true), 5000);
+  }, [setShowModal]);
 
-  setTimeout(() => {
-    setShowTitle(false);
-  }, 4000);
   return (
     <motion.div
       className="container order"
@@ -45,9 +44,7 @@ const Order = ({ pizza }) => {
       animate="visible"
     >
       <AnimatePresence>
-        {showTitle && (
-          <motion.h2 exit={{ y: -1000 }}>Спасибо за заказ :)</motion.h2>
-        )}
+        <h2>Спасибо за заказ :)</h2>
       </AnimatePresence>
       <motion.p variants={childVariants}>Ваша "{pizza.base}" пицца с:</motion.p>
       <motion.div variants={childVariants}>

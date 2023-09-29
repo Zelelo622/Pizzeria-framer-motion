@@ -10,10 +10,11 @@ const containerVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      type: "spring",
-      delay: 0.5,
-    },
+    transition: { type: "spring", delay: 0.5 },
+  },
+  exit: {
+    x: "-100vh",
+    transition: { ease: "easeInOut" },
   },
 };
 
@@ -27,6 +28,18 @@ const nextVariants = {
   },
 };
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity,
+    },
+  },
+};
+
 const Base = ({ addBase, pizza }) => {
   const bases = ["Станадарт", "Тонкий & Хрустящий", "Тонкий и хрустящий"];
   return (
@@ -35,6 +48,7 @@ const Base = ({ addBase, pizza }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
     >
       <h3>Шаг 1: Выберите основу</h3>
       <ul>
@@ -56,13 +70,7 @@ const Base = ({ addBase, pizza }) => {
       {pizza.base && (
         <motion.div className="next" variants={nextVariants}>
           <Link to="/toppings">
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                textShadow: "0px 0px 8px rgb(255,255,255)",
-                boxShadow: "0px 0px 8px rgb(255,255,255)",
-              }}
-            >
+            <motion.button variants={buttonVariants} whileHover="hover">
               Дальше
             </motion.button>
           </Link>
